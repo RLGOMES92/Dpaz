@@ -51,12 +51,9 @@ section{padding:80px 0}
 ═══════════════════════════════════════ */
 #navbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  transition:background .35s,box-shadow .35s;
-}
-#navbar.scrolled{
   background:rgba(250,246,242,.97);
   backdrop-filter:blur(14px);
-  box-shadow:0 1px 28px rgba(60,35,23,.08);
+  box-shadow:0 1px 20px rgba(60,35,23,.08);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
 
@@ -99,7 +96,7 @@ section{padding:80px 0}
   background:#1A0E0A;
 }
 
-.slider{position:relative;width:100%;height:100svh;overflow:hidden}
+.slider{position:relative;width:100%;height:100svh;overflow:hidden;padding-top:0}
 
 .slide{
   position:absolute;inset:0;
@@ -132,10 +129,16 @@ section{padding:80px 0}
   text-transform:uppercase;padding:4px 14px;border-radius:99px;
   margin-bottom:18px;
 }
+.slide-brand{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(22px,3.5vw,32px);font-weight:700;
+  color:#fff;margin-bottom:6px;letter-spacing:.02em;
+}
+.slide-brand em{color:var(--rose-l);font-style:italic}
 .slide-label{
   font-family:'Poppins',sans-serif;font-size:11px;font-weight:600;
   letter-spacing:.2em;text-transform:uppercase;
-  color:var(--rose-l);margin-bottom:10px;
+  color:rgba(255,255,255,.6);margin-bottom:12px;
 }
 .slide-title{
   font-family:'Cormorant Garamond',serif;
@@ -185,25 +188,7 @@ section{padding:80px 0}
 }
 .slide-progress.running{width:100%}
 
-/* Marca tipográfica grande no hero */
-.hero-brand{
-  position:absolute;top:24px;left:50%;transform:translateX(-50%);
-  z-index:10;text-align:center;white-space:nowrap;
-  /* visível antes de fazer scroll */
-}
-.hero-brand-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(18px,3vw,28px);font-weight:700;
-  color:#fff;letter-spacing:.04em;
-  text-shadow:0 2px 12px rgba(0,0,0,.4);
-}
-.hero-brand-name em{color:var(--rose-l);font-style:italic}
-.hero-brand-tagline{
-  font-family:'Poppins',sans-serif;font-size:9px;font-weight:500;
-  letter-spacing:.25em;text-transform:uppercase;
-  color:var(--mint);margin-top:2px;
-  text-shadow:0 1px 6px rgba(0,0,0,.4);
-}
+
 
 /* ═══════════════════════════════════════
    CARDÁPIO
@@ -367,11 +352,7 @@ footer{background:var(--brown);color:var(--rose-l);padding:56px 20px 36px;text-a
 <section id="hero">
   <div class="slider" id="slider">
 
-    <!-- Marca tipográfica flutuante no topo do slider -->
-    <div class="hero-brand">
-      <div class="hero-brand-name">Da Paz <em>Confeitaria</em></div>
-      <div class="hero-brand-tagline">Confeitaria Artesanal</div>
-    </div>
+
 
     
     <div class="slide active" data-index="0">
@@ -380,6 +361,7 @@ footer{background:var(--brown);color:var(--rose-l);padding:56px 20px 36px;text-a
       </div>
       <div class="slide-content">
         <span class="slide-badge">Queridinhos</span>
+        <p class="slide-brand">Da Paz <em>Confeitaria</em></p>
         <p class="slide-label">Bolo de Pote</p>
         <h2 class="slide-title">Brigadeiro Gourmet</h2>
         <p class="slide-sub">Massa fofinha com brigadeiro artesanal</p>
@@ -400,6 +382,7 @@ footer{background:var(--brown);color:var(--rose-l);padding:56px 20px 36px;text-a
       </div>
       <div class="slide-content">
         <span class="slide-badge">Mais Pedido</span>
+        <p class="slide-brand">Da Paz <em>Confeitaria</em></p>
         <p class="slide-label">Bolo de Pote</p>
         <h2 class="slide-title">Chocolate c/ Morango</h2>
         <p class="slide-sub">Chocolate intenso com morangos frescos</p>
@@ -420,6 +403,7 @@ footer{background:var(--brown);color:var(--rose-l);padding:56px 20px 36px;text-a
       </div>
       <div class="slide-content">
         
+        <p class="slide-brand">Da Paz <em>Confeitaria</em></p>
         <p class="slide-label">Bolo de Pote</p>
         <h2 class="slide-title">Paçoca</h2>
         <p class="slide-sub">Creme de amendoim com paçoca crocante</p>
@@ -440,6 +424,7 @@ footer{background:var(--brown);color:var(--rose-l);padding:56px 20px 36px;text-a
       </div>
       <div class="slide-content">
         
+        <p class="slide-brand">Da Paz <em>Confeitaria</em></p>
         <p class="slide-label">Bolo de Pote</p>
         <h2 class="slide-title">Ninho</h2>
         <p class="slide-sub">Recheio aveludado de Leite Ninho</p>
@@ -460,6 +445,7 @@ footer{background:var(--brown);color:var(--rose-l);padding:56px 20px 36px;text-a
       </div>
       <div class="slide-content">
         
+        <p class="slide-brand">Da Paz <em>Confeitaria</em></p>
         <p class="slide-label">Bolo de Pote</p>
         <h2 class="slide-title">Prestígio</h2>
         <p class="slide-sub">Coco ralado com chocolate meio amargo</p>
@@ -659,9 +645,7 @@ footer{background:var(--brown);color:var(--rose-l);padding:56px 20px 36px;text-a
 <!-- ═══ SCRIPTS ═══════════════════════════════════════════════════ -->
 <script>
   // ── Navbar scroll ──────────────────────────────────────
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 48);
-  }, {passive:true});
+  // navbar sempre visível
 
   // ── Mobile menu ────────────────────────────────────────
   function toggleMenu() { document.getElementById('mob-menu').classList.toggle('open'); }
